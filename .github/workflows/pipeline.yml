@@ -1,4 +1,4 @@
-name: Linting
+name: build and tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   simple_deployment_pipeline:
-    timeout-minutes: 3
+    timeout-minutes: 5
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4

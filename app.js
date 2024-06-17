@@ -7,11 +7,12 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static("dist"));
 
 app.get("/health", (req, res) => {
+  if (true) throw "error...  ";
   res.status(200).send();
 });
 
 app.get("/version", (req, res) => {
-  res.status(200).json({ version: "1" });
+  res.status(200).json({ version: "2" });
 });
 
 app.listen(PORT, () => {

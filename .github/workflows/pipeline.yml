@@ -22,6 +22,10 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+      - name: grabbing skip msg
+        env:
+          THE_MSG: contains(${{ toJson(github.event.commits.*.message) }},"#skip")
+        run: echo "$THE_MSG"
 # name: build, tests and deploy
 
 # on:

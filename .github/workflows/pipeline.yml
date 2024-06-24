@@ -66,13 +66,13 @@ jobs:
           DEFAULT_BUMP: patch
 
   notify_job:
-    needs: [simple_deployment_pipeline, check_skip_tag, tag_release]
+    needs: [simple_deployment_pipeline, tag_release]
     runs-on: ubuntu-20.04
     if: always()
     steps:
       - name: Build Failure
         uses: rjstone/discord-webhook-notify@v1
-        if: failure()
+        if: needs.simple_deployment_pipeline.result == 'failure' || needs.tag_release == 'failure'
         with:
           severity: error
           details: Build Failed!
@@ -80,7 +80,7 @@ jobs:
 
       - name: Build Success
         uses: rjstone/discord-webhook-notify@v1
-        if: success()
+        if: needs.simple_deployment_pipeline.result == 'success' || needs.tag_release == 'success'
         with:
           severity: info
           details: Build Succeeded!

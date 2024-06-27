@@ -1,8 +1,16 @@
 name: Periodic actions
 
+# on:
+#   schedule:
+#     - cron: "*/15 * * * *"
+
 on:
-  schedule:
-    - cron: "*/15 * * * *"
+  push:
+    branches:
+      - something
+  pull_request:
+    branches: [something]
+    types: [opened, synchronize]
 
 jobs:
   health-check:

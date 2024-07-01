@@ -15,3 +15,6 @@ Start by running `npm install` inside the project folder
 `npm run start-prod` to run your production build
 
 https://full-stack-open-pokedex-bwyj.onrender.com
+
+repo for exercise 11.20 and 11.21  
+https://github.com/jannepetter/pipestuff
